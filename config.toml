@@ -1,0 +1,31 @@
+[training]
+temperature = 25 # Only for knowledge distillation
+resume = true
+batch_size = 32
+num_workers = 8
+small_model = "MobileNetV2"
+large_model = "DPN26"
+start_iter = -1
+max_iter = 50
+learning_rate = 0.0001
+teacher_weight = "auto"
+use_cuda = true
+teacher_best_model_file = "model_best.pth"
+
+[data]
+data_dir = './data'
+shuffle = true
+validation_split = 0.2
+random_seed = 0
+
+[output]
+student_dir = "./output/student_{}"
+teacher_dir = "./output/teacher_{}"
+distill_dir = "./output/distill_{}_{}_{}_{}"
+model_subdir = "models"
+log_subdir = "logs"
+best_model_file = "model_best.pth"
+distill_teacher_model_file = "teacher.pth"
+model_file = "model_{}.pth"
+save_interval = 1
+verbose = true
